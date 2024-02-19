@@ -78,22 +78,6 @@ lines(quantile.bart.sv["5%",], lty = "dashed", col =2)
 lines(quantile.bart.sv["95%",], lty = "dashed", col =2)
 
 
-
-
-
-
-################# Florian Code ############################
-
-
-# FlorianBART with SV
-
-florian.bart.sv = flexBART(train_data, p =lags, model = "BART", fhorz = h, sv = "SV")
-get_florian.bartsv.forecasts = florian.bart.sv$fcst
-bart.forecast.sv = get_florian.bartsv.forecasts[,,"CPIAUCSL"]
-
-florian.quantile.bart.sv = apply(bart.forecast.sv, 2 , quantile, probs = c(0.05,0.5,0.95))
-florian.point.wise.bart.sv = quantile.bart.sv["50%",]
-
 ########### Graphs and Analyzes #################
 
 Forecast.Comparison.Tbl = matrix(NA, nrow = 5, ncol = fhz)
